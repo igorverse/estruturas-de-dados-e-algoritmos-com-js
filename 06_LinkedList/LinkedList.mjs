@@ -37,7 +37,7 @@ export class LinkedList {
       return currentNode
     }
 
-    return 'Element not found!'
+    return null
   }
 
   removeAt(index) {

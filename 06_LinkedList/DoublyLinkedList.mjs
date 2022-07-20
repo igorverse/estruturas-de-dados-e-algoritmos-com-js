@@ -40,5 +40,34 @@ export class DoublyLinkedList extends LinkedList {
     return 'Invalid index!'
   }
 
+  removeAt(index) {
+    if (index >= 0 && index < this._itemsCounter) {
+      let currentNode = this._head
+      if (index === 0) {
+        this._head = currentNode.next
+
+        if (this._itemsCounter === 1) {
+          this._tail = null
+        } else {
+          this._head.prev = null
+        }
+      } else if (index === this._itemsCounter - 1) {
+        currentNode = this._tail
+        this._tail = currentNode.prev
+        this._tail.next = null
+      } else {
+        currentNode = this.getElementAt(index)
+        const previousNode = currentNode.prev
+        previousNode.next = currentNode.next
+        currentNode.next.prev = previousNode
+      }
+      this._itemsCounter--
+
+      return currentNode.element
+    }
+
+    return null
+  }
+
 }
 
