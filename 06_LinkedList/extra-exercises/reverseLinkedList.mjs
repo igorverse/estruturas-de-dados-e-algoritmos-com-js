@@ -15,5 +15,18 @@ function reverseLinkedList(head) {
   return previousNode
 }
 
+// T: O(n) and S: O(n)
+function recursiveReverseLinkedList(head, previousNode = null) {
+  if (!head) return previousNode
+  
+  const nextNode = head.next
+  head.next = previousNode
+
+  return recursiveReverseLinkedList(nextNode, head)
+}
+
 console.log(reverseLinkedList(numbers._head))
 console.log(reverseLinkedList(linkedList._head))
+
+// console.log(recursiveReverseLinkedList(numbers._head))
+// console.log(recursiveReverseLinkedList(linkedList._head))
