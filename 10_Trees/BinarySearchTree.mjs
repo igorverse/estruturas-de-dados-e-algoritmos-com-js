@@ -41,6 +41,18 @@ class BinarySearchTree {
       this.inOrderTraverseNode(node.right, callback)
     }
   }
+
+  preOrderTraverse(callback) {
+    this.preOrderTraverseNode(this.root, callback)
+  }
+
+  preOrderTraverseNode(node, callback) {
+    if (node) {
+      callback(node.key)
+      this.preOrderTraverseNode(node.left, callback)
+      this.preOrderTraverseNode(node.right, callback)
+    }
+  }
 }
 
 const tree = new BinarySearchTree()
@@ -63,4 +75,8 @@ tree.insert(6)
 
 const printNode = (value) => console.log(value)
 
+console.log('Percurso em-ordem: ')
 tree.inOrderTraverse(printNode)
+
+console.log('Percurso pré-ordem: ')
+tree.preOrderTraverse(printNode)
