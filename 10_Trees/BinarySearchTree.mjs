@@ -30,8 +30,12 @@ class BinarySearchTree {
     }
   }
 
+  inOrderTraverse(callback) {
+    this.inOrderTraverseNode(this.root, callback)
+  }
+
   inOrderTraverseNode(node, callback) {
-    if (!node) {
+    if (node) {
       this.inOrderTraverseNode(node.left, callback)
       callback(node.key)
       this.inOrderTraverseNode(node.right, callback)
@@ -57,4 +61,6 @@ tree.insert(18)
 tree.insert(25)
 tree.insert(6)
 
-console.log(tree)
+const printNode = (value) => console.log(value)
+
+tree.inOrderTraverse(printNode)
